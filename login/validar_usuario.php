@@ -2,11 +2,8 @@
 
 include '../conexion.php';
 
-// $usu_usuario = $_POST['usuario'];
-// $usu_password = $_POST['password'];
-
-$usu_usuario="admin";
-$usu_password="admin";
+$usu_usuario = $_POST['usuario'];
+$usu_password = $_POST['password'];
 
 $sentencia = $conexion->prepare("SELECT * FROM usuario WHERE usuario=? AND `password`=?");
 $sentencia->bind_param('ss', $usu_usuario, $usu_password);
