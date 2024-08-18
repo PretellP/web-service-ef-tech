@@ -18,7 +18,7 @@ try {
         ]);
     } else {
         echo json_encode([
-            'success' => true,
+            'success' => false,
             'message' => 'No hay productos'
         ]);
     }

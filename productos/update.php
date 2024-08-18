@@ -53,8 +53,6 @@ if (isset($_FILES['image']['name'])) {
 }
 
 
-
-
 $nombre = $_POST['nombre'] ?? null;
 $descripcion = $_POST['descripcion'] ?? null;
 $precio = $_POST['precio'] ?? null;
