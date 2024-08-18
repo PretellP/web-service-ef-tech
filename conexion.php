@@ -14,4 +14,5 @@ $conexion = new mysqli($hostname, $username, $password, $database, $port);
 
 if ($conexion->connect_errno) {
     echo "El sitio web está experimentado problemas";
+    exit;
 }

@@ -7,7 +7,7 @@ header('Content-Type: application/json');
 $data = json_decode(file_get_contents('php://input'));
 
 if (isset($data->usuario) && isset($data->password)) {
-    
+
     $usuario = $data->usuario;
     $password = $data->password;
 
@@ -29,18 +29,8 @@ if (isset($data->usuario) && isset($data->password)) {
     };
 
     $sentencia->close();
-}
-else {
+} else {
     echo json_encode(['success' => false, 'message' => 'Faltan parámetros']);
 }
 
 $conexion->close();
-
-
-
-
-
-
-
-
-
