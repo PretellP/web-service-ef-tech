@@ -4,7 +4,9 @@ include '../conexion.php';
 
 header('Content-Type: application/json');
 
-$result = $conexion->query("SELECT * FROM producto");
+$result = $conexion->query("SELECT p.*, pr.nombre AS nombre_proveedor FROM producto p
+                            LEFT JOIN proveedor pr
+                            ON pr.id = p.proveedor_id");
 
 try {
     if ($result->num_rows > 0) {
@@ -20,7 +22,6 @@ try {
             'message' => 'No hay productos'
         ]);
     }
-
 } catch (Exception $e) {
     echo json_encode([
         'success' => false,

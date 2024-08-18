@@ -14,7 +14,11 @@ if (!$product_id) {
     exit;
 }
 
-$stmt = $conexion->prepare("SELECT * FROM producto WHERE id = ?");
+$stmt = $conexion->prepare("SELECT p.*, pr.nombre AS nombre_proveedor FROM producto p
+                            LEFT JOIN proveedor pr
+                            ON pr.id = p.proveedor_id
+                            WHERE p.id = ?");
+
 $stmt->bind_param("i", $product_id);
 $stmt->execute();
 
@@ -41,4 +45,5 @@ try {
     ]);
 }
 
+$stmt->close();
 $conexion->close();
