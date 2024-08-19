@@ -4,7 +4,7 @@ include '../conexion.php';
 
 header('Content-Type: application/json');
 
-$product_id = $_GET['id'] ?? null;
+$product_id = $_GET['id'] ?? 0;
 
 if (!$product_id) {
     echo json_encode([

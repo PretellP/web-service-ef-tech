@@ -6,7 +6,7 @@ header('Content-Type: application/json');
 
 $folder_dir = "images/products/";
 
-$product_id = $_POST['id'] ?? null;
+$product_id = $_POST['id'] ?? 0;
 
 if (!$product_id) {
     echo json_encode([
@@ -30,7 +30,7 @@ $image_url = $currentImageUrl;
 // ---------- EN CASO SE SUBA UNA IMAGEN -------------
 
 if (isset($_FILES['image']['name'])) {
-    $imageName = basename($_FILES['image']['name']);
+    $imageName = uniqid() . basename($_FILES['image']['name']);
     $file_path = $folder_dir . $imageName;
 
     if (move_uploaded_file($_FILES['image']['tmp_name'], '../' . $file_path)) {
@@ -40,7 +40,7 @@ if (isset($_FILES['image']['name'])) {
 
         $currentImageServerUrl = "../" . str_replace($server_url . "web-service-ef-tech/", "", $currentImageUrl);
 
-        if (file_exists($currentImageServerUrl)) {
+        if (file_exists($currentImageServerUrl) && $currentImageServerUrl != '../') {
             unlink($currentImageServerUrl);
         }
     } else {
@@ -79,6 +79,7 @@ try {
         $descripcion,
         $precio,
         $precio_compra,
+        $image_url,
         $categoria,
         $stock,
         $proveedor_id,

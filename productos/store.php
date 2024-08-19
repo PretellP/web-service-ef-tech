@@ -17,11 +17,11 @@ try {
     $stock = $_POST['stock'] ?? 0;
     $proveedor_id = $_POST['proveedor_id'] ?? 0;
 
-    $image_url = Null;
+    $image_url = '';
 
     // ----------- VERIFICA SI SE ENVIÓ UN ARCHIVO ---------
     if (isset($_FILES['image']['name'])) {
-        $imageName = basename($_FILES['image']['name']);
+        $imageName = uniqid() . basename($_FILES['image']['name']);
         $file_path = $folder_dir . $imageName;
 
         // ----------- GUARDA LA IMAGEN EN LA CARPETA IMAGES -----------

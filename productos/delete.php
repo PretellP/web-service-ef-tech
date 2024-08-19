@@ -29,7 +29,7 @@ try {
         $server_url = "http://" . $_ENV['LOCAL_IP'] . '/web-service-ef-tech/';
 
         $imagePath = "../" . str_replace($server_url, "", $imageURL);
-        if (file_exists($imagePath)) {
+        if (file_exists($imagePath) && $imagePath != '../') {
             unlink($imagePath);
         }
     }
