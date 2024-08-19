@@ -32,13 +32,21 @@ try {
                 (compra_id, producto_id, cantidad, precio_unitario)
                 VALUES(?,?,?,?)");
 
+    $stmt_update_stock = $conexion->prepare("UPDATE producto SET
+                                            stock = stock + ?
+                                            WHERE id = ?");
+
     foreach ($detalles as $detalle) {
         $producto_id = $detalle['producto_id'];
         $cantidad = $detalle['cantidad'];
         $precio_unitario = $detalle['precio_unitario'];
 
         $stmt_detalles->bind_param("iiid", $compra_id, $producto_id, $cantidad, $precio_unitario);
-        $stmt_detalles->execute();
+
+        if ($stmt_detalles->execute()) {
+            $stmt_update_stock->bind_param('ii', $cantidad, $producto_id);
+            $stmt_update_stock->execute();
+        }
     }
 
     $conexion->commit();
@@ -59,4 +67,5 @@ try {
 
 $stmt->close();
 $stmt_detalles->close();
+$stmt_update_stock->close();
 $conexion->close();

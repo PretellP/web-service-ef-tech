@@ -4,17 +4,15 @@ include '../conexion.php';
 
 header('Content-Type: application/json');
 
-$result = $conexion->query("SELECT * FROM producto");
-
 try {
 
-    $result_productos = $conexion->query("SELECT p.*, pr.nombre AS nombre_proveedor, pr.ruc ruc_proveedor
+    $result_productos = $conexion->query("SELECT p.*, pr.nombre nombre_proveedor, pr.ruc ruc_proveedor
                                         FROM producto p
                                         LEFT JOIN proveedor pr
                                         ON pr.id = p.proveedor_id");
 
     if ($result_productos->num_rows > 0) {
-        $products = $result->fetch_all(MYSQLI_ASSOC);
+        $products = $result_productos->fetch_all(MYSQLI_ASSOC);
 
         echo json_encode([
             'success' => true,

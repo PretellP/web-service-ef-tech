@@ -15,7 +15,7 @@ if (!$product_id) {
 }
 
 $query = "SELECT image_url FROM producto WHERE id = ?";
-$stmt = $mysqli->prepare($query);
+$stmt = $conexion->prepare($query);
 $stmt->bind_param("i", $product_id);
 $stmt->execute();
 $stmt->bind_result($imageURL);
