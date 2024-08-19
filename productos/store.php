@@ -9,13 +9,13 @@ $folder_dir = "images/products/";
 try {
     // ------ OBTENER LOS PARAMETROS ENVIADOS ----------
 
-    $nombre = $_POST['nombre'] ?? null;
-    $descripcion = $_POST['descripcion'] ?? null;
-    $precio = $_POST['precio'] ?? null;
-    $precio_compra = $_POST['precio_compra'] ?? null;
-    $categoria = $_POST['categoria'] ?? null;
-    $stock = $_POST['stock'] ?? null;
-    $proveedor_id = $_POST['proveedor_id'] ?? null;
+    $nombre = $_POST['nombre'] ?? '';
+    $descripcion = $_POST['descripcion'] ?? '';
+    $precio = $_POST['precio'] ?? 0.0;
+    $precio_compra = $_POST['precio_compra'] ?? 0.0;
+    $categoria = $_POST['categoria'] ?? '';
+    $stock = $_POST['stock'] ?? 0;
+    $proveedor_id = $_POST['proveedor_id'] ?? 0;
 
     $image_url = Null;
 

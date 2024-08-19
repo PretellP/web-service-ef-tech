@@ -23,8 +23,6 @@ try {
             'message' => 'No se encontraron proveedores'
         ]);
     }
-
-    $stmt->close();
 } catch (Exception $e) {
     echo json_encode([
         'success' => false,

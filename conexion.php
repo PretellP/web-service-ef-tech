@@ -16,3 +16,6 @@ if ($conexion->connect_errno) {
     echo "El sitio web está experimentado problemas";
     exit;
 }
+
+$conexion->set_charset("utf8mb4");
+
