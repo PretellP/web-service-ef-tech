@@ -14,17 +14,17 @@ if (!$product_id) {
     exit;
 }
 
-$stmt = $conexion->prepare("SELECT p.*, pr.nombre AS nombre_proveedor FROM producto p
-                            LEFT JOIN proveedor pr
-                            ON pr.id = p.proveedor_id
-                            WHERE p.id = ?");
-
-$stmt->bind_param("i", $product_id);
-$stmt->execute();
-
-$result = $stmt->get_result();
-
 try {
+    $stmt = $conexion->prepare("SELECT p.*, pr.nombre AS nombre_proveedor FROM producto p
+                                LEFT JOIN proveedor pr
+                                ON pr.id = p.proveedor_id
+                                WHERE p.id = ?");
+
+    $stmt->bind_param("i", $product_id);
+    $stmt->execute();
+
+    $result = $stmt->get_result();
+
     if ($result->num_rows > 0) {
         $product = $result->fetch_assoc();
         echo json_encode([

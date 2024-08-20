@@ -6,7 +6,7 @@ header('Content-Type: application/json');
 
 $query = "SELECT c.*, SUM(dc.cantidad) AS total_productos,
         SUM(dc.cantidad * dc.precio_unitario) AS total_costo,
-        u.nombres AS usuario_nombre
+        u.nombres AS usuario_nombre, u.apellidos AS usuario_apellido
         FROM compra c
         LEFT JOIN detallecompra dc 
         ON dc.compra_id = c.id

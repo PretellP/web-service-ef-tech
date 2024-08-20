@@ -7,7 +7,7 @@ header('Content-Type: application/json');
 $input = json_decode(file_get_contents('php://input'), true);
 
 $usuario_id = $input['usuario_id'] ?? null;
-$fecha = $input['fecha'] ?? null;
+$fecha = $input['fecha_hora'] ?? null;
 $detalles = $input['detalles'] ?? [];
 
 if (!$usuario_id || !$fecha || empty($detalles)) {
