@@ -45,7 +45,8 @@ try {
     } else {
         echo json_encode([
             'success' => false,
-            'message' => 'No fue posible eliminar el producto: ' . $stmt->error
+            'message' => 'No fue posible eliminar el producto: Pertenece a una o más compras'
+            // 'message' => 'No fue posible eliminar el producto: ' . $stmt->error
         ]);
     }
 
